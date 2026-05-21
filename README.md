@@ -13,7 +13,7 @@ manual testing documentation and test reports.
 
 - [Test Plan](./Manual_Testing/Test%20Plan.md)
 - [Test Scenarios](./Manual_Testing/_TestScenarios.md)
-- [Test Reports](./Manual_Testing/assets/test-reports.png)
+- ![Test Reports](Manual_Testing/assets/test-reports.png)
 
 ## 👩‍💻 About Me
 QA Engineer with experience in manual testing, 
