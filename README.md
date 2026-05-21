@@ -5,9 +5,11 @@ manual testing documentation and test reports.
 
 ## 📁 Repository Structure
 
-| Folder | Description |
+| File | Description |
 |---|---|
-| [Manual_Testing](./Manual_Testing) | Test plans, scenarios and reports |
+| [Cross OS Compatibility Matrix](./assets/Cross%20OS%20Compatibility%20Matrix.csv) | Testing across different operating systems |
+| [Test Plan](./Test%20Plan.md) | Overall test strategy and scope |
+| [Test Scenarios](./_TestScenarios.md) | High-level test scenarios |
 
 ## 📋 Manual Testing
 
