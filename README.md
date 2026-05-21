@@ -7,6 +7,7 @@ manual testing documentation and test reports.
 
 | File | Description |
 |---|---|
+| [Project Documentation](./assets/Project_Documentation.xlsx)
 | [Cross OS Compatibility Matrix](./assets/Cross%20OS%20Compatibility%20Matrix.csv) | Testing across different operating systems |
 | [Test Plan](./Test%20Plan.md) | Overall test strategy and scope |
 | [Test Scenarios](./_TestScenarios.md) | High-level test scenarios |
