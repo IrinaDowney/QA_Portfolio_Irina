@@ -1,4 +1,4 @@
-# QA Portfolio – Irina Downey
+# QA_Portfolio_Irina
 
 Welcome to my QA testing portfolio. This repository contains 
 manual testing documentation and test reports.
