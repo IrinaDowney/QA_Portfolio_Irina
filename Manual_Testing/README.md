@@ -1,4 +1,4 @@
-# Manual_Testing – California Marketing Website
+# Manual_Testing/QA Analyst – California Marketing Website
 
 **Project:** California Marketing Website
 **URL:** https://qasvus.wixsite.com/ca-marketing
