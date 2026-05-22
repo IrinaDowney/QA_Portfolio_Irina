@@ -1,12 +1,24 @@
-# QA Manual Testing Portfolio
+# QA_Portfolio_Irina 
 
-## Documentation
+Hi! I'm Software QA Automation Engineer specializing in Manual Testing, Automation, API Testing, 
+and CI/CD workflows, AI-assisted testing workflows.
 
-- [Project Documentation](./Manual_Testing/assets/Project_Documentation.xlsx)
-- [Cross OS Compatibility Matrix](./Manual_Testing/assets/Cross%20OS%20Compatibility%20Matrix.csv)
-- [Test Plan](./Manual_Testing/Test%20Plan.md)
-- [Test Scenarios](./Manual_Testing/_TestScenarios.md)
-- [Project Documentation PDF](./Manual_Testing/assets/Project_Documentation.pdf)
-## Screenshots
+📍 Location | 📧 irenddd972@gmail.com | 
+🔗 [LinkedIn](https://www.linkedin.com/in/irina-downey) | 
+🌐 [GitHub](https://github.com/IrinaDowney)
 
-![Test Reports](./Manual_Testing/assets/test-reports.png)
+---
+
+## 👩‍💻 About Me
+
+QA Engineer/QA Analyst with experience in manual testing, test case design, 
+bug reporting, and test automation. Passionate about quality, 
+attention to detail, and delivering reliable software.
+
+Skilled in:
+- Test Automation (Python + Selenium)
+- API Testing (Postman)
+- CI/CD Pipelines (GitHub Actions)
+- AI-assisted testing workflows
+
+---
