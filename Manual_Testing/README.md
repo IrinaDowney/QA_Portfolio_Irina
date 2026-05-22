@@ -81,6 +81,13 @@ multiple browsers and operating systems.
 | MacOS | Firefox | Desktop |
 
 ---
+## 🛠️ Tools Used
+
+| Tool | Purpose |
+|---|---|
+| Google Sheets | Test cases, compatibility matrix, test reports |
+| Google Docs | Test plan, test scenarios, bug reports, Jira |
+| PDF Export |
 
 ## 📈 Test Results Summary
 
