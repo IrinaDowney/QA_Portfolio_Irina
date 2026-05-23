@@ -11,12 +11,13 @@ and CI/CD workflows, AI-assisted testing workflows.
 
 ## 👩‍💻 About Me
 
-QA Engineer/QA Analyst with experience in manual, test case design, 
-bug reporting, QA project documentation from scratch and test automation. 
-Passionate about quality, attention to detail, and delivering reliable software.
+QA Engineer / QA Analyst with hands-on experience in manual testing, test case design, bug reporting, and building QA documentation from scratch, as well as test automation. I’m focused on ensuring software quality through structured testing, attention to detail, and reliable validation of functional and API workflows.
+
+I’m passionate about improving product quality and building efficient testing processes using modern QA tools and AI-assisted workflows.
 
 Skilled in:
 - Manual testing
+- QA Documentation (test plans, test scenarios, reports)
 - Test Automation (Python + Selenium)
 - API Testing (Postman, Newman)
 - CI/CD Pipelines (GitHub Actions)
