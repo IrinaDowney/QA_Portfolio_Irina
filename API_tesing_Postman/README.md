@@ -1,8 +1,7 @@
-📘 CA Marketing API Testing (Postman)
-API testing project built with Postman, JavaScript tests, environment variables, and Newman.
+📘 CA Marketing API Testing (Postman) project built with Postman, JavaScript tests, environment variables, and Newman.
 
 🚀 What’s Included
-- Create → Get → Update → Delete address requests
+- Post → Get → Patch → Delete address requests
 
 - Clean JSON request bodies
 
