@@ -16,8 +16,9 @@ bug reporting, QA project documentation from scratch and test automation.
 Passionate about quality, attention to detail, and delivering reliable software.
 
 Skilled in:
+- Manual testing
 - Test Automation (Python + Selenium)
-- API Testing (Postman)
+- API Testing (Postman, Newman)
 - CI/CD Pipelines (GitHub Actions)
 - AI-assisted testing workflows
 
