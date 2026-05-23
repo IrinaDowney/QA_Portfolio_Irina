@@ -1,0 +1,505 @@
+{
+  "info": {
+    "_postman_id": "53210eec-ca46-410a-af9a-1b6568a2c755",
+    "name": "CA_marketing Automation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52850866",
+    "_collection_link": "https://go.postman.co/collection/52850866-53210eec-ca46-410a-af9a-1b6568a2c755?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Create new address",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const responseJson = pm.response.json();\r",
+              "\r",
+              "// ============================================\r",
+              "// STATUS CHECK\r",
+              "// ============================================\r",
+              "\r",
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "pm.test(\"Response time is less than 500ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response Size is less than 2000B\", function () {\r",
+              "    pm.expect(pm.response.responseSize).to.be.below(2000);\r",
+              "});\r",
+              "\r",
+              "    // RESPONSE CHECKS\r",
+              "    \r",
+              "    pm.test(\"Response has id\", function () {\r",
+              "        pm.expect(responseJson).to.have.property(\"id\");\r",
+              "});\r",
+              "        \r",
+              "        pm.test(\"ID is not empty\", function () {\r",
+              "            pm.expect(responseJson.id).to.not.be.empty;\r",
+              "});\r",
+              "\r",
+              "pm.test(\"ID is valid UUID format\", function () {\r",
+              "    const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;\r",
+              "    pm.expect(responseJson.id).to.match(uuidPattern);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Body matches string '{}'\", function () {\r",
+              "    pm.expect(pm.response.text()).to.include(\"\");\r",
+              "});\r",
+              "\r",
+              "// DEBUG\r",
+              "console.log(\"Response ID:\", responseJson.id);\r",
+              "console.log(\"Saved addressId:\", pm.environment.get(\"addressId\"));"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"address\": {\r\n        \"fullName\": {\r\n            \"firstName\": \"{{FN}}\",\r\n            \"lastName\": \"{{LN}}\"\r\n        },\r\n        \"company\": \"{{COMPANY}}\",\r\n        \"taxInfo\": {\r\n            \"id\": null,\r\n            \"type\": null\r\n        },\r\n        \"addressLine1\": \"111 North Franklin Street\",\r\n        \"addressLine2\": null,\r\n        \"street\": {\r\n            \"name\": null,\r\n            \"number\": null\r\n        },\r\n        \"city\": \"Christiansburg\",\r\n        \"country\": \"USA\",\r\n        \"subdivision\": \"VA\",\r\n        \"zipCode\": \"24073\",\r\n        \"phoneNumber\": \"1234567890\",\r\n        \"location\": {\r\n            \"latitude\": 37.13158230000001,\r\n            \"longitude\": -80.41081129999999\r\n        }\r\n    },\r\n    \"setAsDefault\": false\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{URL}}",
+          "host": [
+            "{{URL}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get_ALL",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const responseJson = pm.response.json();  // ✅ declared once only\r",
+              "\r",
+              "pm.test(\"Status code is 200\", function () {   // ✅ once only\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response time is less than 500ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response size is less than 10000B\", function () {\r",
+              "    pm.expect(pm.response.responseSize).to.be.below(10000);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response body is not empty\", function () {\r",
+              "    pm.expect(pm.response.text()).to.not.be.empty;  \r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response contains correct ID\", function () {\r",
+              "pm.expect(pm.response.text()).to.include(pm.environment.get(\"ID\"));\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "inherit"
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "_I0SM9Iix2xRPLKvc-319cM1dID7fVyIekCP7K_Q6nw.eyJpbnN0YW5jZUlkIjoiYmE2Y2RiNDUtZjhhNy00ZjlmLWE4MzEtMDNiYWI1OTgzNDMyIiwiYXBwRGVmSWQiOiIxNDUxN2UxYS0zZmYwLWFmOTgtNDA4ZS0yYmQ2OTUzYzM2YTIiLCJtZXRhU2l0ZUlkIjoiMjhiNzkzZDYtNTQyNC00MDU4LTgwNDktMDI2YTRkYjAyODJmIiwic2lnbkRhdGUiOiIyMDI2LTA0LTIwVDE5OjQxOjU5LjI4M1oiLCJ1aWQiOiI0YzY1OTZiNi02M2I1LTRjYTUtYTJkZC1jZmNkN2ZkMWNkMmQiLCJkZW1vTW9kZSI6ZmFsc2UsImFpZCI6IjU4Mzk0MWFlLWM3NDgtNDJmOC1hMDY1LWUzZjc0OGU4NmEyNyIsImJpVG9rZW4iOiI5MmRiNDg5My1hYzgzLTBmYzctMjg3OC0wMWQwZjgyODFjMWQiLCJzaXRlT3duZXJJZCI6ImY5MTRmMTFjLWFhYjMtNDUyNy04ZDRlLWJhYjc2MjE0M2E2MCIsImV4cGlyYXRpb25EYXRlIjoiMjAyNi0wNC0yMFQyMzo0MTo1OS4yODNaIiwiaGFzVXNlclJvbGUiOmZhbHNlLCJzaWQiOiIyN2QyOTNlMC0xNGIwLTRkNmEtODE0Yy0xODY1OTI0NDkwMzkiLCJzY3QiOiIyMDI2LTA0LTIwVDAwOjEwOjM2LjMyOFoiLCJicyI6Ik54LWYtYkJvVERmcmZBakl6dDNrTWZzZ3dXOFpWQUxWUEZNZ0NfM2ZMQmciLCJzY2QiOiIyMDE5LTA5LTAxVDAyOjE3OjMzLjQ3N1oifQ",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{URL}}",
+          "host": [
+            "{{URL}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get_spec_address",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// ============================================\r",
+              "// PARSE RESPONSE ONCE\r",
+              "// ============================================\r",
+              "\r",
+              "const jsonData = pm.response.json(); // ✅ declared once, used everywhere\r",
+              "\r",
+              "// ============================================\r",
+              "// STATUS CHECKS\r",
+              "// ============================================\r",
+              "\r",
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response time is less than 500ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response size is less than 2000B\", function () {\r",
+              "    pm.expect(pm.response.responseSize).to.be.below(2000);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response body is not empty\", function () {\r",
+              "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+              "});\r",
+              "\r",
+              "// ============================================\r",
+              "// ID CHECK — top level not inside address\r",
+              "// ============================================\r",
+              "\r",
+              "pm.test(\"ID is correct\", function () {\r",
+              "    pm.expect(jsonData.id).to.eql(pm.environment.get(\"addressId\")); // ✅ top level id\r",
+              "});\r",
+              "\r",
+              "// ============================================\r",
+              "// ALL VALUES CHECK\r",
+              "// ============================================\r",
+              "\r",
+              "pm.test(\"Full name is correct\", function () {\r",
+              "    pm.expect(jsonData.address.fullName.firstName).to.eql(pm.environment.get(\"FN\"));\r",
+              "    pm.expect(jsonData.address.fullName.lastName).to.eql(pm.environment.get(\"LN\"));\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Address details are correct\", function () {\r",
+              "    pm.expect(jsonData.address.country).to.eql(\"USA\");\r",
+              "    pm.expect(jsonData.address.subdivision).to.eql(\"VA\");\r",
+              "    pm.expect(jsonData.address.city).to.eql(\"Christiansburg\");\r",
+              "    pm.expect(jsonData.address.zipCode).to.eql(\"24073\");\r",
+              "    pm.expect(jsonData.address.addressLine1).to.eql(\"111 North Franklin Street\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Phone and company are correct\", function () {\r",
+              "    pm.expect(jsonData.address.phoneNumber).to.eql(\"1234567890\");\r",
+              "    pm.expect(jsonData.address.company).to.eql(pm.environment.get(\"COMPANY\"));\r",
+              "});\r",
+              "\r",
+              "console.log(\"Response ID:\", jsonData.id);\r",
+              "console.log(\"Environment addressId:\", pm.environment.get(\"addressId\"));\r",
+              "\r",
+              "\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "inherit"
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "_I0SM9Iix2xRPLKvc-319cM1dID7fVyIekCP7K_Q6nw.eyJpbnN0YW5jZUlkIjoiYmE2Y2RiNDUtZjhhNy00ZjlmLWE4MzEtMDNiYWI1OTgzNDMyIiwiYXBwRGVmSWQiOiIxNDUxN2UxYS0zZmYwLWFmOTgtNDA4ZS0yYmQ2OTUzYzM2YTIiLCJtZXRhU2l0ZUlkIjoiMjhiNzkzZDYtNTQyNC00MDU4LTgwNDktMDI2YTRkYjAyODJmIiwic2lnbkRhdGUiOiIyMDI2LTA0LTIwVDE5OjQxOjU5LjI4M1oiLCJ1aWQiOiI0YzY1OTZiNi02M2I1LTRjYTUtYTJkZC1jZmNkN2ZkMWNkMmQiLCJkZW1vTW9kZSI6ZmFsc2UsImFpZCI6IjU4Mzk0MWFlLWM3NDgtNDJmOC1hMDY1LWUzZjc0OGU4NmEyNyIsImJpVG9rZW4iOiI5MmRiNDg5My1hYzgzLTBmYzctMjg3OC0wMWQwZjgyODFjMWQiLCJzaXRlT3duZXJJZCI6ImY5MTRmMTFjLWFhYjMtNDUyNy04ZDRlLWJhYjc2MjE0M2E2MCIsImV4cGlyYXRpb25EYXRlIjoiMjAyNi0wNC0yMFQyMzo0MTo1OS4yODNaIiwiaGFzVXNlclJvbGUiOmZhbHNlLCJzaWQiOiIyN2QyOTNlMC0xNGIwLTRkNmEtODE0Yy0xODY1OTI0NDkwMzkiLCJzY3QiOiIyMDI2LTA0LTIwVDAwOjEwOjM2LjMyOFoiLCJicyI6Ik54LWYtYkJvVERmcmZBakl6dDNrTWZzZ3dXOFpWQUxWUEZNZ0NfM2ZMQmciLCJzY2QiOiIyMDE5LTA5LTAxVDAyOjE3OjMzLjQ3N1oifQ",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{URL}}/{{ID}}",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "{{ID}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update address",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// ============================================\r",
+              "// PARSE RESPONSE\r",
+              "// ============================================\r",
+              "\r",
+              "const responseJson = pm.response.json();  // ✅ declared once only\r",
+              "\r",
+              "// ============================================\r",
+              "// STATUS CHECKS\r",
+              "// ============================================\r",
+              "\r",
+              "pm.test(\"Status code is 200\", function () {   // ✅ once only\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response time is less than 500ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response size is less than 10000B\", function () {\r",
+              "    pm.expect(pm.response.responseSize).to.be.below(10000);\r",
+              "});\r",
+              "\r",
+              "\r",
+              "pm.test(\"Response body is not empty\", function () {\r",
+              "    pm.expect(pm.response.text()).to.not.be.empty;  \r",
+              "});\r",
+              "\r",
+              "\r",
+              "console.log(\"Response ID:\", responseJson.id);\r",
+              "console.log(\"Saved addressId:\", pm.environment.get(\"addressId\"));"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"address\": {\r\n        \"id\": \"ee3e5a9f-38d5-42ae-ae46-ab3a98595caf\",\r\n        \"fullName\": {\r\n            \"firstName\": \"Sam\",\r\n            \"lastName\": \"Smith\"\r\n        },\r\n        \"company\": \"Sams888\",\r\n        \"taxInfo\": {\r\n            \"id\": null,\r\n            \"type\": null\r\n        },\r\n        \"addressLine1\": \"111 West Main Street\",\r\n        \"addressLine2\": null,\r\n        \"street\": {\r\n            \"name\": null,\r\n            \"number\": null\r\n        },\r\n        \"city\": \"Christiansburg\",\r\n        \"country\": \"USA\",\r\n        \"subdivision\": \"VA\",\r\n        \"zipCode\": \"24073\",\r\n        \"phoneNumber\": \"1234567890\",\r\n        \"location\": {\r\n            \"latitude\": 37.1283613,\r\n            \"longitude\": -80.41083499999999\r\n        }\r\n    },\r\n    \"setAsDefault\": false,\r\n    \"fieldMask\": {\r\n        \"paths\": [\r\n            \"fullName.firstName\",\r\n            \"fullName.lastName\",\r\n            \"company\",\r\n            \"addressLine1\",\r\n            \"city\",\r\n            \"country\",\r\n            \"subdivision\",\r\n            \"zipCode\",\r\n            \"phoneNumber\",\r\n            \"location.latitude\",\r\n            \"location.longitude\",\r\n            \"setAsDefault\"\r\n        ]\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://addresses.wixapps.net/_api/addresses-web/v1/addresses/0e44a6c1-a095-47e6-9d08-12f25984e28b",
+          "protocol": "https",
+          "host": [
+            "addresses",
+            "wixapps",
+            "net"
+          ],
+          "path": [
+            "_api",
+            "addresses-web",
+            "v1",
+            "addresses",
+            "0e44a6c1-a095-47e6-9d08-12f25984e28b"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Updated address",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "\r",
+              "\r",
+              "const responseJson = pm.response.json();  // ✅ declared once only\r",
+              "\r",
+              "\r",
+              "pm.test(\"Status code is 200\", function () {   // ✅ once only\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "\r",
+              "pm.test(\"Response time is less than 500ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response size is less than 2000B\", function () {\r",
+              "    pm.expect(pm.response.responseSize).to.be.below(2000);\r",
+              "});\r",
+              "\r",
+              "\r",
+              "pm.test(\"Response body is not empty\", function () {\r",
+              "    pm.expect(pm.response.text()).to.not.be.empty;  \r",
+              "});\r",
+              "\r",
+              "pm.test(\"ID is correct\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.address.id).to.eql('0e44a6c1-a095-47e6-9d08-12f25984e28b');\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://addresses.wixapps.net/_api/addresses-web/v1/addresses/174770a4-dc3a-47bd-adef-ca039e48d7d1",
+          "protocol": "https",
+          "host": [
+            "addresses",
+            "wixapps",
+            "net"
+          ],
+          "path": [
+            "_api",
+            "addresses-web",
+            "v1",
+            "addresses",
+            "174770a4-dc3a-47bd-adef-ca039e48d7d1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete specific address",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"response body is an empty object\", function () {\r",
+              "    const jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData).to.be.an(\"object\");\r",
+              "    pm.expect(Object.keys(jsonData)).to.have.length(0);\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/{{ID}}",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "{{ID}}"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "value",
+        "value": "{{CA_marketing Automation}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      },
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "CA_marketing Automation",
+      "value": ""
+    }
+  ]
+}
