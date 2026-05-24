@@ -1,4 +1,4 @@
-# QA_Portfolio_Irina 
+# QA_Automation_Portfolio_
 
 Hi! I'm Software QA Automation Engineer specializing in Manual Testing, Automation, API Testing, 
 and CI/CD workflows, AI-assisted testing workflows.
